@@ -48,5 +48,14 @@ pipeline{
                 }
             }
         }
+        stage('Nexus Artificat Upload'){
+
+            steps{
+
+                script{
+                 nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'nexus-auth', groupId: 'com.example', nexusUrl: '54.210.111.106:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'momo-cash-repo', version: '1.0.0'   
+                }
+            }
+        }
     }
 }
